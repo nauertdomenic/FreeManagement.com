@@ -1,0 +1,21 @@
+div.a {
+  text-align: center;
+  vertical-align: middle;
+}
+
+img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#einruecken, #rowButton, #loeschenBtn, #loeschenBtnAll {
+  margin-left: 15px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+#tabelle, #tab1 {
+  width: 98%;
+  margin-left: 15px;
+}
