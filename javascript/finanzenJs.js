@@ -13,11 +13,6 @@ function keyEventWindow(key) {
   }
 }
 
-//tooltip funktion
-$(document).ready(function() {
-  $('.tooltipped').tooltip();
-});
-
 //Neue Zeile der Tabelle hinzufügen und mit eingegebenen Werten füllen
 function addRow() {
   //Textfelder holen
@@ -184,26 +179,30 @@ window.onload = function() {
 
   // Get a reference to the database service
   var database = firebase.database();
-
   var rootRef = firebase.database().ref("postsFinanzen");
 
   rootRef.once("value").then(function(snapshot) {
 
-    var anzahlChild = snapshot.numChildren();
     var finanzen = snapshot.val();
-
     var table = document.getElementById("tabelle");
+    var exportTab = document.getElementById("exportTabelle");
 
     for (i in finanzen) {
 
       //Tabellenelemente erstellen und füllen
       var tr = document.createElement('tr');
+      var extr = document.createElement('tr');
       var td1 = document.createElement('td');
       var td2 = document.createElement('td');
       var td3 = document.createElement('td');
       var td4 = document.createElement('td');
+      var extd1 = document.createElement('td');
+      var extd2 = document.createElement('td');
+      var extd3 = document.createElement('td');
       var txtBeschreibung = document.createTextNode(finanzen[i].beschreibung);
+      var exBeschreibung = document.createTextNode(finanzen[i].beschreibung);
       var txtLeer = document.createTextNode(" ");
+      var exLeer = document.createTextNode(" ");
 
       // Löschen-Button erzeugen
       var löschen = document.createElement("a");
@@ -218,14 +217,21 @@ window.onload = function() {
 
       //Inhalte anhängen
       td1.appendChild(txtBeschreibung);
+      extd1.appendChild(exBeschreibung);
       if (finanzen[i].einnahme) {
         var txtBetrag = document.createTextNode(finanzen[i].betrag);
+        var exBetrag = document.createTextNode(finanzen[i].betrag);
         td2.appendChild(txtBetrag);
+        extd2.appendChild(exBetrag);
         td3.appendChild(txtLeer);
+        extd3.appendChild(exLeer);
       } else {
         var txtBetrag = document.createTextNode(-finanzen[i].betrag);
+        var exBetrag = document.createTextNode(-finanzen[i].betrag);
         td2.appendChild(txtLeer);
+        extd2.appendChild(exLeer);
         td3.appendChild(txtBetrag);
+        extd3.appendChild(exBetrag);
       }
 
       td4.appendChild(löschen);
@@ -235,7 +241,12 @@ window.onload = function() {
       tr.appendChild(td3);
       tr.appendChild(td4);
 
+      extr.appendChild(extd1);
+      extr.appendChild(extd2);
+      extr.appendChild(extd3);
+
       table.appendChild(tr); //Buchen zeilen anhängen
+      exportTab.appendChild(extr);
     }
     berechneSum();
 
@@ -248,3 +259,27 @@ function deleteFinanzen(key) {
   console.log("postsFinanzen/" + key);
   delete(deleteRef);
 }
+
+//Tabelle exportieren
+var tableToExcel = (function() {
+  var uri = 'data:application/vnd.ms-excel;base64,',
+    template = '<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:x="urn:schemas-microsoft-com:office:excel" xmlns="http://www.w3.org/TR/REC-html40"><head><!--[if gte mso 9]><xml><x:ExcelWorkbook><x:ExcelWorksheets><x:ExcelWorksheet><x:Name>{worksheet}</x:Name><x:WorksheetOptions><x:DisplayGridlines/></x:WorksheetOptions></x:ExcelWorksheet></x:ExcelWorksheets></x:ExcelWorkbook></xml><![endif]--></head><body><table>{table}</table></body></html>',
+    base64 = function(s) {
+      return window.btoa(unescape(encodeURIComponent(s)))
+    },
+    format = function(s, c) {
+      return s.replace(/{(\w+)}/g, function(m, p) {
+        return c[p];
+      })
+    }
+
+  return function(table, name) {
+    if (!table.nodeType) table = document.getElementById("exportTabelle")
+
+    var ctx = {
+      worksheet: name || 'Worksheet',
+      table: table.innerHTML
+    }
+    window.location.href = uri + base64(format(template, ctx))
+  }
+})()
