@@ -1,17 +1,34 @@
 <!DOCTYPE html>
 <html lang="de-DE">
 
-<!--Beginn head-->
-
 <head>
-	<meta charset="utf-8">
-	<title>Finanzen</title>
+	<meta charset="utf-8" />
+	<style>
+		.center {
+			margin: 0 auto;
+		}
+
+		img {
+			display: block;
+			margin-left: auto;
+			margin-right: auto;
+		}
+	</style>
+
+	<!--Import Google Icon Font-->
+	<link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<!--Import materialize.css-->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/css/materialize.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+	<!--Let browser know website is optimized for mobile-->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link href="../css/style.css" rel="stylesheet" type="text/css">
+	<link rel="icon" type="image/png" href="../bilder/icon_home.png">
+
 </head>
 
-<!--Beginn body-->
-
 <body>
-
 	<div class="all">
 		<!--Navigationsleiste-->
 		<!--Dropdown-Menü definieren-->
@@ -23,7 +40,7 @@
 		</ul>
 		<nav>
 			<div class="nav-wrapper blue">
-				<a href="finanzen.html" class="brand-logo right"><i class="material-icons left">euro_symbol</i>Finanzen</a>
+				<a href="home.html" class="brand-logo right"><i class="material-icons left">home</i>Home</a>
 				<a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
 				<ul class="left hide-on-med-and-down">
 					<li><a href="home.html"><i class="material-icons left">home</i>Home</a></li>
@@ -38,15 +55,72 @@
 					<li><a href="finanzen.html"><i class="material-icons left">euro_symbol</i>Finanzen</a></li>
 					<ul>
 						<li><a href="#!">Projekte<i class="material-icons left">show_chart</i></a></li>
-						<li><a href="projekte.html" class="center-align"><i class="material-icons right">show_chart</i>Projektübersicht</a></li>
-						<li><a href="projekte_projekte_anzeigen.html" class="center-align"><i class="material-icons right">show_chart</i>Projekte anzeigen</a></li>
-						<li><a href="#!" class="center-align"><i class="material-icons right">show_chart</i>Projekt hinzufügen</a></li>
-						<li><a href="#!" class="center-align">Tutorial<i class="material-icons right">build</i></a></li>
+						<li><a href="projekte.html" class="element_sidenav"><i class="material-icons right">show_chart</i>Projektübersicht</a></li>
+						<li><a href="projekte_projekte_anzeigen.html" class="element_sidenav"><i class="material-icons right">show_chart</i>Projekte anzeigen</a></li>
+						<li><a href="projekte_projekte_hinzufügen.html" class="element_sidenav"><i class="material-icons right">show_chart</i>Projekt hinzufügen</a></li>
+						<li><a href="projekte_tutorial.html" class="element_sidenav">Tutorial<i class="material-icons right">build</i></a></li>
 					</ul>
 					<li><a href="sonstiges.html"><i class="material-icons left">more</i>Sonstiges</a></li>
 				</ul>
 			</div>
 		</nav>
+		</nav>
+		<br />
+
+		<img src="../bilder/hello.gif" alt="" class="circle responsive-img" />
+		<div class="row">
+			<div class"column">
+				<div class="col s12 m8 offset-m2 l6 offset-l3">
+					<div class="card-panel grey lighten-5 z-depth-1">
+
+						<div class="row valign-wrapper">
+							<div class="col s2">
+								<img src="https://goo.gl/qRBLym" alt="" class="circle responsive-img"> <!-- notice the "circle" class -->
+							</div>
+							<div class="col s10">
+								<span class="black-text">
+									<h5>Sound 1 <audio id="player" src="../sounds/faded.ogg"></audio>
+
+										<button id="einruecken" class="blue btn" onclick="document.getElementById('player').play()"><i class="material-icons middle">play_arrow</i></button>
+										<button class="blue btn" onclick="document.getElementById('player').pause()"><i class="material-icons middle">pause</i></button>
+										<button class="blue btn" onclick="document.getElementById('player').volume += 0.1"><i class="material-icons middle">volume_up</i></button>
+										<button class="blue btn" onclick="document.getElementById('player').volume -= 0.1"><i class="material-icons middle">volume_down</i></button></h5>
+								</span>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class"column">
+					<div class="col s12 m8 offset-m2 l6 offset-l3">
+						<div class="card-panel grey lighten-5 z-depth-1">
+
+							<div class="row valign-wrapper">
+								<div class="col s2">
+									<img src="https://goo.gl/qRBLym" alt="" class="circle responsive-img"> <!-- notice the "circle" class -->
+								</div>
+								<div class="col s10">
+									<span class="black-text">
+										<h5>Sound 2 <audio id="player2" src="../sounds/worldaway.mp3"></audio>
+
+											<button id="einruecken" class="blue btn" onclick="document.getElementById('player2').play()"><i class="material-icons middle">play_arrow</i></button>
+											<button class="blue btn" onclick="document.getElementById('player2').pause()"><i class="material-icons middle">pause</i></button>
+											<button class="blue btn" onclick="document.getElementById('player2').volume += 0.1"><i class="material-icons middle">volume_up</i></button>
+											<button class="blue btn" onclick="document.getElementById('player2').volume -= 0.1"><i class="material-icons middle">volume_down</i></button></h5>
+									</span>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="center">
+
+		<iframe width="560" height="315" src="https://www.youtube.com/embed/VmUGe8KDdGI" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe> <!-- notice the "circle" class -->
+	</div>
+	<br>
+
 
 	<!--Footer der Seite definieren-->
 	<footer class="page-footer blue">
@@ -76,10 +150,19 @@
 				© 2018 Copyright
 				<a class="grey-text text-lighten-4 right" href="impressum.html">Impressum</a>
 				<br>
-				<a class="grey-text text-lighten-4 right" href="agb.html">AGB</a>
+
 			</div>
 		</div>
 	</footer>
+
+
+	<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script>
+
+	<script>
+		$(".button-collapse").sideNav();
+	</script>
+
 </body>
 
 </html>
