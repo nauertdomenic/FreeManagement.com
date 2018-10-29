@@ -100,8 +100,13 @@
               <p>
                 Hierfür muss lediglich ein Zahl in das Betragsfeld eingegeben werden,
                 die entsprechende Kategorie ausgewählt und mit <b><i>"BUCHEN"</i></b>
-                abgeschickt werden.
+                abgeschickt werden. Optional auch über die Enter-Taste.
               </p>
+              <p>
+                Mit der Strg-Taste lässt sich die Kategorie ohne klicken ändern.
+              </p>
+              <br>
+              <p>Für einen Download der Tabelle im xls-Format muss die Seite vorher aktualisiert werden! (F5)</p>
             </div>
           </div>
         </div>
@@ -156,6 +161,12 @@
         Tabelle zurücksetzen<i class="material-icons left">delete_forever</i>
       </button>
 
+      <span class="tooltipped" data-position="bottom" data-tooltip="vorher aktualisieren! (F5)">
+        <button class="btn blue" id="einruecken" name="export" onclick="tableToExcel('testTable', 'W3C Example Table')">
+          Download (beta)<i class="material-icons left">file_download</i>
+        </button>
+      </span>
+
       <br><br><br>
 
       <table id="tabelle" class="highlight blue lighten-5">
@@ -164,6 +175,14 @@
           <th>Einnahmen</th>
           <th>Ausgaben</th>
           <th> </th>
+        </tr>
+      </table>
+
+      <table hidden id="exportTabelle">
+        <tr id="tr">
+          <th>Beschreibung</th>
+          <th>Einnahmen</th>
+          <th>Ausgaben</th>
         </tr>
       </table>
 
@@ -201,7 +220,6 @@
         © 2018 Copyright
         <a class="grey-text text-lighten-4 right" href="impressum.html">Impressum</a>
         <br>
-        <a class="grey-text text-lighten-4 right" href="#!">AGB</a>
       </div>
     </div>
   </footer>
@@ -211,6 +229,11 @@
 
   <script>
     $(".button-collapse").sideNav();
+
+    //tooltip funktion
+    $(document).ready(function() {
+      $('.tooltipped').tooltip();
+    });
   </script>
 
 </body>
