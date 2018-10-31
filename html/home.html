@@ -24,6 +24,7 @@
 	<!--Let browser know website is optimized for mobile-->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<link href="../css/style.css" rel="stylesheet" type="text/css">
+	<link href="../css/home.css" rel="stylesheet" type="text/css">
 	<link rel="icon" type="image/png" href="../bilder/icon_home.png">
 
 </head>
@@ -67,19 +68,40 @@
 		</nav>
 		<br />
 
-		<img src="../bilder/hello.gif" alt="" class="circle responsive-img" />
+		<!--Überschrift-->
+		<div id="heading_home" class="row">
+			<h1 id="heading_welcome">Herzlich Willkommen bei FreeManagement.com</h1>
+			<h2 id="heading_description">Die Website für alle Selbstständigen</h2>
+		</div>
+
+		<div>
+			<img id="pinguin" src="../bilder/hello.gif" alt="" class="circle responsive-img" />
+			</br></br>
+		</div>
+
+		<div>
+			<ul id="liste_funtkionen">
+				<h6 id="überschrift_liste">Auf FreeManagement.com können Sie folgende Tools verwenden: </h6>
+				<li class="listenelemente">Sie können Ihre Arbeitszeiten erfassen</li>
+				<li class="listenelemente">Ebenso können Sie Ihre Finanzen im Überblick behalten</li>
+				<li class="listenelemente">Zuletzt besteht die Möglichkeit, alle Ihre Projekte zu verwalten</li>
+			</ul>
+			</br></br>
+		</div>
+
+		<hr id="trennlinie">
+		<h6 id="akustik_hinweis">Im Folgenden werden Ihnen einige Medien-Inhalte dargestellt, die Ihnen akustische Unterstützung während des Arbeitens bieten können</h6>
 		<div class="row">
 			<div class"column">
 				<div class="col s12 m8 offset-m2 l6 offset-l3">
 					<div class="card-panel grey lighten-5 z-depth-1">
-
 						<div class="row valign-wrapper">
 							<div class="col s2">
-								<img src="https://goo.gl/qRBLym" alt="" class="circle responsive-img"> <!-- notice the "circle" class -->
+								<img id="musik_icon1" src="https://goo.gl/qRBLym" alt="" class="circle responsive-img"> <!-- notice the "circle" class -->
 							</div>
 							<div class="col s10">
 								<span class="black-text">
-									<h5>Sound 1 <audio id="player" src="../sounds/faded.ogg"></audio>
+									<h5>Faded <audio id="player" src="../sounds/faded.ogg"></audio>
 
 										<button id="einruecken" class="blue btn" onclick="document.getElementById('player').play()"><i class="material-icons middle">play_arrow</i></button>
 										<button class="blue btn" onclick="document.getElementById('player').pause()"><i class="material-icons middle">pause</i></button>
@@ -96,11 +118,11 @@
 
 							<div class="row valign-wrapper">
 								<div class="col s2">
-									<img src="https://goo.gl/qRBLym" alt="" class="circle responsive-img"> <!-- notice the "circle" class -->
+									<img id="musik_icon2" src="https://goo.gl/qRBLym" alt="" class="circle responsive-img"> <!-- notice the "circle" class -->
 								</div>
 								<div class="col s10">
 									<span class="black-text">
-										<h5>Sound 2 <audio id="player2" src="../sounds/worldaway.mp3"></audio>
+										<h5>A World Away <audio id="player2" src="../sounds/worldaway.mp3"></audio>
 
 											<button id="einruecken" class="blue btn" onclick="document.getElementById('player2').play()"><i class="material-icons middle">play_arrow</i></button>
 											<button class="blue btn" onclick="document.getElementById('player2').pause()"><i class="material-icons middle">pause</i></button>

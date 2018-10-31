@@ -78,15 +78,20 @@
 	</nav>
 	<div class="row">
 		<form class="col s12">
-			<div class="input-field col s6">
-				<p>
+			<div class="input-field col s2">
+				<p id="uhrzeit">
 					Uhrzeit zum Umrechnen:
 				</p>
-			</div>
-			<div class="input-field col s6">
-				<input type="time" name="usr_time">
+
 			</div>
 
+			<div class="input-field col s2">
+				<input type="time" name="usr_time" id="inputtime">
+			</div>
+			<div class="input-field col s4">
+				<button class="btn blue" id="Kuchen2" name="Kekse" onclick="umrechnen();return false;">
+					Zeit umrechnen<i class="material-icons left">av_timer</i>
+			</div>
 		</form>
 	</div>
 	<div class="row">
@@ -106,9 +111,9 @@
 		</form>
 	</div>
 	<span id="einruecken">
-		<button class="blue btn" id="myBtn" onclick="button()">Zeiten &uuml;bernehmen<i class="material-icons left">av_timer</i></button>
+		<button class="btn green" id="myBtn" onclick="button()">Zeiten &uuml;bernehmen<i class="material-icons left">av_timer</i></button>
 
-		<button class="btn blue" id="loeschenBtnAll" name="loeschenBtnAll" onclick="resetTable()">
+		<button class="btn red" id="loeschenBtnAll" name="loeschenBtnAllret" onclick="resetTable()">
 			Tabelle zurücksetzen<i class="material-icons left">delete_forever</i>
 		</button>
 		<button class="blue btn" id="einruecken" onclick="reload('tabEx', 'Arbeitszeit' )">Export to Excel (Beta - Bitte Website aktualisieren)<i class="material-icons left">save</i></button>
@@ -178,6 +183,13 @@
 			event.preventDefault();
 			if (event.keyCode === 13) {
 				document.getElementById("myBtn").click();
+			}
+		});
+		var input3 = document.getElementById("Kuchen2");
+		input.addEventListener("keyup", function(event) {
+			event.preventDefault();
+			if (event.keyCode === 13) {
+				document.getElementById("Kuchen2").click();
 			}
 		});
 	</script>

@@ -4,6 +4,7 @@ function exp() {
 }
 
 function button() {
+  location.reload();
   var table = document.getElementById("tab1");
   var anfang = document.getElementById("Start").value;
   var ende = document.getElementById("Ende").value;
@@ -77,7 +78,14 @@ function funct1() {
       var td4 = document.createElement('td');
       var text1 = document.createTextNode(anfang);
       var text2 = document.createTextNode(ende);
-      var text3 = document.createTextNode(ende - anfang);
+      if(ende-anfang >6)
+      {
+        var text4 = document.createTextNode(ende - anfang -0.5);
+        var text3=text4.toFixed(2);
+      }else{
+      var text4 = document.createTextNode(ende - anfang);
+      text3=text4.toFixed(2);
+    }
       // Löschen-Button erzeugen
       var löschen = document.createElement("a");
       löschen.className = "btn waves-effect waves-light red";
@@ -109,6 +117,12 @@ function saveArbeit() {
   var Keks = parseInt(StartT);
   var endeT = document.getElementById('Ende').value;
   var Kuchen = parseInt(endeT);
+  if(Kuchen-Keks >6)
+  {
+    var time = Kuchen-Keks-0.5;
+  } else{
+    var time= Kuchen-Keks;
+  }
   // neuen Key erzeugen
   // Der Key wird gespeichert
   var newPostKey = firebase.database().ref().child('postsArbeit').push().key;
@@ -117,7 +131,7 @@ function saveArbeit() {
     key: newPostKey,
     Start: document.getElementById("Start").value,
     Ende: document.getElementById("Ende").value,
-    Summe: (Kuchen - Keks)
+    Summe: time
   };
 
 
@@ -253,3 +267,12 @@ var tableToExcel = (function() {
     window.location.href = uri + base64(format(template, ctx))
   }
 })()
+
+function umrechnen(){
+  var temp = document.getElementById("inputtime").valueAsNumber;
+  temp=temp/3600000;
+  temp=temp.toFixed(2);
+  M.toast({
+    html: 'Dezimalzeit verwenden: ' + temp
+  })
+}
