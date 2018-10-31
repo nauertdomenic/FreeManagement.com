@@ -45,9 +45,12 @@ function addRow() {
 
   // Löschen-Button erzeugen
   var löschen = document.createElement("a");
-  löschen.className = "btn waves-effect waves-light red";
-  löschen.innerHTML = "Löschen";
+  var i = document.createElement("i");
+  i.innerHTML = "delete_forever";
+  i.className = "material-icons";
+  löschen.className = "btn-floating red";
   löschen.id = btnKey;
+  löschen.appendChild(i);
   löschen.onclick = function() {
     var deleteRef = firebase.database().ref("postsFinanzen/" + this.id);
     deleteRef.remove();
@@ -206,9 +209,12 @@ window.onload = function() {
 
       // Löschen-Button erzeugen
       var löschen = document.createElement("a");
-      löschen.className = "btn waves-effect waves-light red";
-      löschen.innerHTML = "Löschen";
+      var iEl = document.createElement("i");
+      iEl.innerHTML = "delete_forever";
+      iEl.className = "material-icons";
+      löschen.className = "btn-floating red";
       löschen.id = i;
+      löschen.appendChild(iEl);
       löschen.onclick = function() {
         var deleteRef = firebase.database().ref("postsFinanzen/" + this.id);
         deleteRef.remove();
@@ -251,13 +257,6 @@ window.onload = function() {
     berechneSum();
 
   });
-}
-
-//Key aus firebase löschen
-function deleteFinanzen(key) {
-  var deleteRef = firebase.database().ref("postsFinanzen/" + key);
-  console.log("postsFinanzen/" + key);
-  delete(deleteRef);
 }
 
 //Tabelle exportieren

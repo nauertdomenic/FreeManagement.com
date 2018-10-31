@@ -1,4 +1,4 @@
-div.a {
+#a {
   text-align: center;
   vertical-align: middle;
 }
@@ -7,6 +7,7 @@ img {
   display: block;
   margin-left: auto;
   margin-right: auto;
+  transition: 0.5s transform;
 }
 
 #einruecken, #rowButton, #loeschenBtn, #loeschenBtnAll {
@@ -18,4 +19,25 @@ img {
 #tabelle, #tab1 {
   width: 98%;
   margin-left: 15px;
+}
+
+#maxwidth {
+  max-width: 500px;
+}
+
+#kartentitel {
+  padding-left: 25px;
+  padding-top: 25px;
+}
+
+.element_sidenav {
+  margin-left: 55px;
+}
+
+h4:hover {
+  color: #2196f3;
+}
+
+img:hover {
+  transform: scale(1.15, 1.15);
 }
