@@ -18,9 +18,10 @@ function addRow() {
   //Textfelder holen
   var beschreibung = document.getElementById("beschreibung");
   var betrag = document.getElementById("betrag");
+  var ww = parseFloat(betrag.value);
   var einnahme = document.getElementById("einnahme").checked;
 
-  if (betrag.value <= 0) { //Wenn Betrag kleiner 0 -> Warunung + Abbrechen
+  if (ww <= 0) { //Wenn Betrag kleiner 0 -> Warunung + Abbrechen
     M.toast({
       html: 'Betrag muss > 0 sein!'
     })
@@ -60,11 +61,11 @@ function addRow() {
   //Inhalte anhängen
   td1.appendChild(txtBeschreibung);
   if (einnahme) {
-    var txtBetrag = document.createTextNode(betrag.value);
+    var txtBetrag = document.createTextNode(ww);
     td2.appendChild(txtBetrag);
     td3.appendChild(txtLeer);
   } else {
-    var txtBetrag = document.createTextNode(-betrag.value);
+    var txtBetrag = document.createTextNode(-ww);
     td2.appendChild(txtLeer);
     td3.appendChild(txtBetrag);
   }
@@ -93,17 +94,17 @@ function addRow() {
 function berechneSum() {
   //Summe der Werte
   var table = document.getElementById("tabelle"),
-    sumEinahmen = 0,
-    sumAusgaben = 0,
-    differenz = 0;
+    sumEinahmen = 0.0,
+    sumAusgaben = 0.0,
+    differenz = 0.0;
 
   for (var i = 1; i < table.rows.length; i++) //Werte summieren
   {
     if (table.rows[i].cells[1].innerHTML != " ") {
-      sumEinahmen = sumEinahmen + parseInt(table.rows[i].cells[1].innerHTML);
+      sumEinahmen = sumEinahmen + parseFloat(table.rows[i].cells[1].innerHTML);
     }
     if (table.rows[i].cells[2].innerHTML != " ") {
-      sumAusgaben = sumAusgaben + parseInt(table.rows[i].cells[2].innerHTML);
+      sumAusgaben = sumAusgaben + parseFloat(table.rows[i].cells[2].innerHTML);
     }
   }
 
