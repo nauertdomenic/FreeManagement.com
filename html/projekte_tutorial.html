@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html  lang="de-DE">
+
+<head>
+  <!-- Meta-Daten festlegen-->
+  <meta charset="utf-8">
+  <meta name="author" content="Nils Leger">
+  <!-- Browser mitteilen, dass die Website für mobile Geräteoptimiert ist-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Google-Icons importieren-->
+  <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!-- materialize.css importieren-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/css/materialize.min.css">
+
+  <!-- Title und Icon festlegen-->
+  <title>Projektverwaltung</title>
+  <link rel="icon" type="image/png" href="../bilder/icon_projekt.png">
+
+  <!-- Kleine Änderungen am Style vornehmen-->
+  <!--#kartentitel: der Titel soll etwas Abstand vom Rand bekommen-->
+  <!--.element_sidenav: die Elemente der Sidenav mit dieser Klasse sollen eingrückt sein-->
+  <style>
+    #kartentitel{
+        padding-left: 25px;
+        padding-top: 25px;
+      }
+
+      .element_sidenav {
+        margin-left: 55px;
+      }
+    </style>
+</head>
+
+
+<body>
+  <!--Dropdown-Menü für die Navigationsleiste definieren-->
+  <ul id="projekte_dropdown" class="dropdown-content">
+    <li><a href="projekte.html">Projektübersicht</a></li>
+    <li><a href="projekte_projekte_anzeigen.html">Projekte anzeigen</a></li>
+    <li><a href="projekte_projekte_hinzufügen.html">Projekt hinzufügen</a></li>
+    <li><a href="projekte_tutorial.html">Tutorial</a></li>
+  </ul>
+
+  <!--Navigationsleiste definieren-->
+  <nav>
+    <div class="nav-wrapper blue">
+      <a href="projekte.html" class="brand-logo right"><i class="material-icons left">show_chart</i>Projektverwaltung</a>
+      <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+      <ul class="left hide-on-med-and-down">
+        <li><a href="home.html"><i class="material-icons left">home</i>Home</a></li>
+        <li><a href="arbeitszeit.html"><i class="material-icons left">access_time</i>Arbeitszeiterfassung</a></li>
+        <li><a href="finanzen.html"><i class="material-icons left">euro_symbol</i>Finanzen</a></li>
+        <li><a href="#!" class="dropdown-button" data-activates="projekte_dropdown">Projekte<i class="material-icons right">arrow_drop_down</i> <i class="material-icons left">show_chart</i></a></li>
+        <li><a href="sonstiges.html"><i class="material-icons left">more</i>Sonstiges</a></li>
+      </ul>
+      <ul class="side-nav" id="mobile-demo">
+        <li><a href="home.html"><i class="material-icons left">home</i>Home</a></li>
+        <li><a href="arbeitszeit.html"><i class="material-icons left">access_time</i>Arbeitszeiterfassung</a></li>
+        <li><a href="finanzen.html"><i class="material-icons left">euro_symbol</i>Finanzen</a></li>
+        <ul>
+          <li><a href="#!">Projekte<i class="material-icons left">show_chart</i></a></li>
+          <li><a href="projekte.html" class="element_sidenav"><i class="material-icons right">show_chart</i>Projektübersicht</a></li>
+          <li><a href="projekte_projekte_anzeigen.html" class="element_sidenav"><i class="material-icons right">show_chart</i>Projekte anzeigen</a></li>
+          <li><a href="projekte_projekte_hinzufügen.html" class="element_sidenav"><i class="material-icons right">show_chart</i>Projekt hinzufügen</a></li>
+          <li><a href="projekte_tutorial.html" class="element_sidenav">Tutorial<i class="material-icons right">build</i></a></li>
+        </ul>
+        <li><a href="sonstiges.html"><i class="material-icons left">more</i>Sonstiges</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Inhalt der Website definieren-->
+  <div class="container">
+
+    <ul class="collapsible">
+      <li>
+        <div class="collapsible-header active"><i class="material-icons">show_chart</i>Wie erstelle ich ein Projekt?</div>
+        <div class="collapsible-body">
+          <div><b>Ein Projekt wird folgendermaßen erstellt:</b></br></br></div>
+          <div>
+            Alle erforderlichen Eingaben müssen getätigt werden (es müssen alle Felder ausgefüllt werden)! </br>
+            Anschließend kann über den grünen Button "Hinzufügen" das Projekte gespeichert werden. </br>
+            Die Eingaben werden nun überprüft. Sind alle Eingaben korrekt, wird das Projekt tatsächlich gespeichert. </br>
+            Liegen fehlerhafte Informationen vor, erhalten Sie eine spezielle Fehlernachricht.
+          </div>
+        </div>
+      </li>
+      <li>
+        <div class="collapsible-header"><i class="material-icons">mode_edit</i>Welche Informationen muss ich eingeben?</div>
+        <div class="collapsible-body">
+          <div>
+            <b>Folgende Eingaben sind unter den genannten Voraussetzungen zu tätigen:</br></br></b>
+            <i>Die meisten einzugebenden Informationen ergeben sich aus dem Titel des Feldes. In diesen Fällen wird keine ausführtliche Erläuterung vorgenommen.</br></br></i>
+          </div>
+
+          <ul>
+            <li>Der Projektname: nur Buchstaben, Leerzeichen und Bindestriche</li>
+            <li>Die Projektdauer: nur Zahlen (Angabe in Tagen)</li>
+            <li>Der/Die Projektverwantwortliche: nur Buchstaben, Leerzeichen und Bindestriche</li>
+            <li>Das Projektürzel: Zahlen und Buchstaben, maximal vier Zeichen</li>
+            <li>Der Kunde: nur Buchstaben, Leerzeichen und Bindestriche</li>
+            <li>Die Kosten: nur Zahlen (Angabe in Euro)</li>
+            <li>Der Ansprechpartner beim Kunden: nur Buchstaben, Leerzeichen und Bindestriche</li>
+            <li>Der Projektstart: Auswahl durch Klicken auf das "Projektstart"-Feld und Auswählen eines Tages</li>
+            <li>Das Projektende: Auswahl durch Klicken auf das "Projektende"-Feld und Auswählen eines Tages</li>
+            <li>
+              Ausführliche Beschreibung: nur Buchstaben, Leerzeichen und Bindestriche. </br>
+              Alle weiteren Informationen sollen in diese Feld eingetragen werden.
+            </li>
+            <li>Projektdokumentation: Hier kann bei Bedarf ein Dokument hochgeladen werden (kein Pflichtfeld).</li>
+          </ul>
+
+          </br>
+
+          <div>
+            <b>Wurden alle erforderlichen Informationen eingefüllt, kann das Projekt gespeichert werden.</b>
+          </div>
+
+        </div>
+      </li>
+
+      <li>
+        <div class="collapsible-header"><i class="material-icons">search</i>Wie finde ich ein bereits erstelltes Projekt?</div>
+        <div class="collapsible-body">
+          <div>
+            <b>So finden Sie ein bereits erstelltes Projekt</br></br></b>
+          </div>
+          <div>
+            In der Navigationsleiste ist der Menüpunkt "Projekte Anzeigen", den Sie zum Auffinden eines bereits erstellten Projekts auswählen müssen. </br>
+            Dort werden Ihnen alle Projekte aufgelistet. </br>
+            Suchen Sie nach einem bestimmten Projekt, können Sie den Projektnamen in der Suchleiste eingeben. </br>
+            Über den Button "Alle Anzeigen" können Sie die Suche rückgängig machen und sich alle Projekte anzeigen lassen.
+          </div>
+        </div>
+      </li>
+      <li>
+        <div class="collapsible-header"><i class="material-icons">report</i>Weitere Informationen</div>
+        <div class="collapsible-body">
+          Weitere Informationen zu den Entwicklern dieser Website finden Sie <a href="sonstiges.html">hier.</a>
+        </div>
+      </li>
+    </ul>
+
+    <!--Hier endet die Darstellung der Collapsibles-->
+  </div>
+
+  <!--Footer der Seite definieren-->
+  <footer class="page-footer blue">
+    <div class="container">
+      <div class="row">
+        <div class="col l6 s12">
+          <h5 class="white-text">Über diese Website</h5>
+          <p class="grey-text text-lighten-4">
+            Diese Website bietet eine kostenlose Möglichkeit für alle kleinen Unternehmen und Selbstständigen,
+            die ihre Finanzen, Arbeitszeiten und Projekte im Überblick behalten wollen.
+            Viel Spaß und Erfolg beim Nutzen unserer Website.
+          </p>
+        </div>
+        <div class="col l4 offset-l2 s12">
+          <h5 class="white-text">Diese Website wurde erstellt mithilfe von...</h5>
+          <ul>
+            <li><a class="grey-text text-lighten-3" href="https://materializecss.com/">Material Design</a></li>
+            <li><a class="grey-text text-lighten-3" href="https://material.io/tools/icons/?style=baseline">Material Icons</a></li>
+            <li><a class="grey-text text-lighten-3" href="http://wpvs.de/">Webprogrammieren Tutorial</a></li>
+            <li><a class="grey-text text-lighten-3" href="https://github.com/">Versionsverwaltung GitHub</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-copyright">
+      <div class="container">
+        © 2018 Copyright
+        <a class="grey-text text-lighten-4 right" href="impressum.html">Impressum</a>
+        <br>
+      </div>
+    </div>
+  </footer>
+
+  <!-- weitere Scripte einbinden-->
+  <!-- jQuery und materialize.js importieren-->
+  <!-- wichtig ist hierbei jQuery zuerst zu importieren-->
+  <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script>
+
+  <!-- die Sidenav und Collapsibles initialisieren-->
+  <script>
+    $(".button-collapse").sideNav();
+
+    $(document).ready(function() {
+      $('.collapsible').collapsible();
+    });
+  </script>
+
+</body>
+
+</html>

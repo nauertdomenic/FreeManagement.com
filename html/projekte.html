@@ -1,1 +1,317 @@
+<!DOCTYPE html>
+<html lang="de-DE">
 
+<head>
+  <!-- Meta-Daten festlegen-->
+  <meta charset="utf-8">
+  <meta name="author" content="Nils Leger">
+  <!-- Browser mitteilen, dass die Website für mobile Geräteoptimiert ist-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Google-Icons importieren-->
+  <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!-- materialize.css importieren-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/css/materialize.min.css">
+
+  <!-- Title und Icon festlegen-->
+  <title>Projektverwaltung</title>
+  <link rel="icon" type="image/png" href="../bilder/icon_projekt.png">
+
+  <!-- Kleine Änderungen am Style vornehmen-->
+  <!--#kartentitel: der Titel soll etwas Abstand vom Rand bekommen-->
+  <!--.element_sidenav: die Elemente der Sidenav mit dieser Klasse sollen eingrückt sein-->
+  <style>
+    #kartentitel{
+      padding-left: 25px;
+      padding-top: 25px;
+    }
+
+    .element_sidenav {
+      margin-left: 55px;
+    }
+  </style>
+</head>
+
+
+<body>
+  <!--Dropdown-Menü für die Navigationsleiste definieren-->
+  <ul id="projekte_dropdown" class="dropdown-content">
+    <li><a href="projekte.html">Projektübersicht</a></li>
+    <li><a href="projekte_projekte_anzeigen.html">Projekte anzeigen</a></li>
+    <li><a href="projekte_projekte_hinzufügen.html">Projekt hinzufügen</a></li>
+    <li><a href="projekte_tutorial.html">Tutorial</a></li>
+  </ul>
+
+  <!--Navigationsleiste definieren-->
+  <nav>
+    <div class="nav-wrapper blue">
+      <a href="projekte.html" class="brand-logo right"><i class="material-icons left">show_chart</i>Projektverwaltung</a>
+      <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+      <ul class="left hide-on-med-and-down">
+        <li><a href="home.html"><i class="material-icons left">home</i>Home</a></li>
+        <li><a href="arbeitszeit.html"><i class="material-icons left">access_time</i>Arbeitszeiterfassung</a></li>
+        <li><a href="finanzen.html"><i class="material-icons left">euro_symbol</i>Finanzen</a></li>
+        <li><a href="#!" class="dropdown-button" data-activates="projekte_dropdown">Projekte<i class="material-icons right">arrow_drop_down</i> <i class="material-icons left">show_chart</i></a></li>
+        <li><a href="sonstiges.html"><i class="material-icons left">more</i>Sonstiges</a></li>
+      </ul>
+      <ul class="side-nav" id="mobile-demo">
+        <li><a href="home.html"><i class="material-icons left">home</i>Home</a></li>
+        <li><a href="arbeitszeit.html"><i class="material-icons left">access_time</i>Arbeitszeiterfassung</a></li>
+        <li><a href="finanzen.html"><i class="material-icons left">euro_symbol</i>Finanzen</a></li>
+        <ul>
+          <li><a href="#!">Projekte<i class="material-icons left">show_chart</i></a></li>
+          <li><a href="projekte.html" class="element_sidenav"><i class="material-icons right">show_chart</i>Projektübersicht</a></li>
+          <li><a href="projekte_projekte_anzeigen.html" class="element_sidenav"><i class="material-icons right">show_chart</i>Projekte anzeigen</a></li>
+          <li><a href="projekte_projekte_hinzufügen.html" class="element_sidenav"><i class="material-icons right">show_chart</i>Projekt hinzufügen</a></li>
+          <li><a href="projekte_tutorial.html" class="element_sidenav">Tutorial<i class="material-icons right">build</i></a></li>
+        </ul>
+        <li><a href="sonstiges.html"><i class="material-icons left">more</i>Sonstiges</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Inhalt der Website definieren-->
+  <div class="container">
+
+    <div class="row">
+      <div class="col s12 m6 l4">
+        <div class="card hoverable blue-grey darken-1">
+          <div class="card-content white-text">
+            <span class="card-title">Warum ist Projektmanagment so wichtig?</span>
+            <p>In einer Zeit mit starkem Innovations- und Veränderungsimpuls, in dem in schneller
+              Abfolge immer neue Medien und Technologien auf den Markt kommen, müssen Unternehmen
+              flexibel und schnell agieren, um sich diesen ständig wandelnden Marktbedingungen
+              anzupassen. Nur Unternehmen, die es schaffen mit diesen Änderungen umzugehen,
+              werden auf Dauer erfolgreich sein. Viele Aufgaben sind heute komplex und neuartig
+              und häufig ist die Mitarbeit verschiedenster Fachexperten für die erfolgreiche Arbeit nötig. [...]</p>
+          </div>
+          <div class="card-action">
+            <a href="https://mediencommunity.de/system/files/wbts/projektmanagement/le01/24_grnde_fr_projektmanagement_und_erfolgsfaktoren.html">Mehr dazu</a>
+            <a href="https://news.google.com/search?q=Projektmanagement&hl=de&gl=DE&ceid=DE%3Ade">News zum Thema</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col s12 m6 l4">
+        <div class="card hoverable card blue-grey darken-1">
+          <div id="kartentitel" class="card-title white-text">Komponenten des Projektmanagements</div>
+          <div class="card-image">
+            <img src="..\bilder\projektmanagement.png" class="responsive-img">
+          </div>
+          <div class="card-action">
+            <a href="https://www.links2u.de/leistungen/service-management/28-links2u/61-projektmanagement">Quelle</a>
+          </div>
+          <div class="divider"></div>
+          <div class="card-content white-text blue-grey darken-1">
+            Zu den Komponenten des Projektmanagements zählen u. a. Plan, Qualität, Team, Strategie, Ziel und Erfolg.
+            Dem beigefügten Link können weitere Informationen entnommen werden.
+          </div>
+        </div>
+      </div>
+
+      <div class="col s12 m6 l4 ">
+        <div class="card-panel hoverable blue-grey darken-1">
+          <div class="row valign-wrapper">
+            <div class="col s2">
+              <img src="../bilder/gantt.jpg" alt="Henry Laurence Gantt" class="circle responsive-img">
+            </div>
+            <div class="col s10">
+              <div class="blue-grey darken-1 yellow-text">
+                <h6>Die Anfänge des Projektmanagements</h6>
+              </div>
+              <span class="white-text">
+                Henry Laurence Gantt beschäftige sich Anfang des 20. Jahrhunderts mit dem Projektmanagement und gilt als Erfinder des "Gantt-Diagramms.
+                Karol Adamiecki entwickelte eine ähnliche Methode.
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col s12 m6 l4">
+        <div class="card-panel hoverable blue-grey darken-1">
+          <div class="row valign-wrapper">
+            <div class="col s2">
+              <img src="../bilder/manhatten_projekt.jpg" alt="Henry Laurence Gantt" class="circle responsive-img">
+            </div>
+            <div class="col s10">
+              <div class="blue-grey darken-1 yellow-text">
+                <h6>Die erste Dokumentation im Projektmanagement</h6>
+              </div>
+              <span class="white-text">
+                Die erste Dokumentation der Vorgehensweise beim Projektmanagement wurde vermutlich im Rahmen des Manhattan-Projekts vorgenommen.
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col s12 m6 l6">
+        <div class="video-container">
+          <iframe width="875" height="492" src="https://www.youtube.com/embed/nbETI6zt9dQ" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        </div>
+      </div>
+      <div class="col s12 m6 l6">
+        <div class="card-panel hoverable blue-grey darken-1">
+          <h4 class="white-text">Projektphasen</h4>
+          <span class="white-text">Projektphasen sind zeitliche Abschnitte, die im Vorgehensmodell für ein Projekt festgelegt sind. Die Phasen bilden den Rahmen, in dem jeweils einzelne Aktivitäten mit ihrem Arbeitsinhalt (was tun?) und ihren
+            Ergebnissen festgelegt werden. Diese Aktivitäten werden im Projektmanagement (Teilbereich Aufgabenmanagement) gesteuert und kontrolliert. Üblicherweise enden die Projektphasen mit definierten Meilensteinen. Je nach Projektart,
+            Projektprodukt, Branche etc. sind Phasenmodelle i. d. R. individuell auf die Aufgabenstellung ausgerichtet (z. B. für Investitionsprojekte).
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col s12">
+        <div class="col s12 m6">
+          <div class="card small hoverable blue-grey darken-1">
+            <div class="card-image waves-effect waves-block waves-light">
+              <img class="activator" src="../bilder/projectmanagement.svg">
+            </div>
+            <div class="card-content">
+              <span class="card-title activator white-text">Kennzahlen<i class="material-icons right">more_vert</i></span>
+              <p><a class="yellow-text" href="https://www.projektmagazin.de/glossarterm/kennzahl"><i class="material-icons left">insert_link</i>Mehr Informationen</a></p>
+            </div>
+            <div class="card-reveal">
+              <span class="card-title grey-text text-darken-4">Wichtige Kennzahlen sind...<i class="material-icons right">close</i></span>
+              <table>
+                <thead>
+                  <tr>
+                    <th>Kennzahl</th>
+                    <th>Bedeutung</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Eindeutigkeit</td>
+                    <td>Keine Unsicherheiten</td>
+                  </tr>
+                  <tr>
+                    <td>Zielausrichtung</td>
+                    <td>Verknüpfung mit Zielsetzung</td>
+                  </tr>
+                  <tr>
+                    <td>Relevanz</td>
+                    <td>erfolgsentscheidend</td>
+                  </tr>
+                  <tr>
+                    <td>Beeinflussbarkeit</td>
+                    <td>veränderbar</td>
+                  </tr>
+                  <tr>
+                    <td>Verfügbarkeit</td>
+                    <td>Datengrundlage vorhanden</td>
+                  </tr>
+                  <tr>
+                    <td>Wirtschaftlichkeit</td>
+                    <td>Nutzen muss Aufwand übersteigen</td>
+                  </tr>
+                  <tr>
+                    <td>Verständlich</td>
+                    <td>intuitiv verständlich</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="col s12 m6">
+          <div class="card small hoverable blue-grey darken-1">
+            <div class="card-content center-align">
+              <img class="materialboxed" width="450" src="../bilder/pm_grundlagen.jpg">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col s12">
+        <div class="card hoverable blue-grey darken-1">
+          <div class="card-title white-text" id="kartentitel">
+            Projektmanagement-Systeme
+          </div>
+          <div class="card-content white-text">
+            <p>Um die Arbeits- und Organisationsform Projektmanagement in einem Unternehmen zu verankern, sind entsprechende Rahmenbedingungen und Spielregeln notwendig.
+              Es müssen ganzheitliche, leistungsfähige Projektmanagement-Systeme geschaffen werden, die im Regelfall Standards, Maßnahmen und Tools in folgenden Bereichen enthalten:
+            </p>
+          </div>
+          <div class="card-tabs">
+            <ul class="tabs tabs-fixed-width tabs-transparent">
+              <li class="tab"><a class="active" href="#organisation">Organisation</a></li>
+              <li class="tab"><a href="#methodik">Methodik</a></li>
+              <li class="tab"><a href="#qualizifierung">Qualifizierung</a></li>
+              <li class="tab"><a href="#software">Software</a></li>
+            </ul>
+          </div>
+          <div class="card-content grey lighten-3">
+            <div id="organisation">Die organisatorische Verankerung des Projektmanagements muss im jeweiligen Unternehmen eindeutig geklärt sein. Hierzu zählen beispielsweise die Definition von klaren Rollen, Kompetenzen und Verantwortlichkeiten
+              (insbesondere das Zusammenspiel Linie – Projekt), die Einrichtung einer zentralen Organisationseinheit für Projektmanagement (zum Beispiel Project Management Office, Project Competence Center) oder die Festlegung von PM-Karrierepfaden
+              und Anreizsystemen.</div>
+            <div id="methodik">Im Bereich der Methodik werden Standards, Instrumente, Methoden, Richtlinien und Prozesse definiert, die bei Projekten zur Anwendung kommen sollen. Die Methodik wird in der Regel individuell für die jeweilige
+              Organisation festgelegt. In vielen Fällen wird die verwendete Methodik in einem Projektmanagementhandbuch dokumentiert.</div>
+            <div id="qualizifierung">Damit Projektmanagement erfolgreich angewendet werden kann, müssen Führungskräfte, Projektleiter und -mitarbeiter entsprechend für ihre Rolle vorbereitet und dafür qualifiziert werden. Seminare,
+              Training-on-the-Job oder Projekt-Coaching sind weit verbreitete Instrumente zur Qualifizierung.</div>
+            <div id="software">Es müssen IT-gestützte Strukturen geschaffen werden, die einen effizienten Informations- und Kommunikationsfluss gewährleisten sowie die Projektplanung und -steuerung über den gesamten Projektverlauf unterstützen. Am
+              Markt existieren eine Vielzahl von PM-Tools und umfangreichen PM-Lösungen, die diverse Funktionalitäten bieten.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  <!-- hier endet die Darstellung des Inhalts-->
+  </div>
+
+
+  <!--Footer der Seite definieren-->
+  <footer class="page-footer blue">
+    <div class="container">
+      <div class="row">
+        <div class="col l6 s12">
+          <h5 class="white-text">Über diese Website</h5>
+          <p class="grey-text text-lighten-4">
+            Diese Website bietet eine kostenlose Möglichkeit für alle kleinen Unternehmen und Selbstständigen,
+            die ihre Finanzen, Arbeitszeiten und Projekte im Überblick behalten wollen.
+            Viel Spaß und Erfolg beim Nutzen unserer Website.
+          </p>
+        </div>
+        <div class="col l4 offset-l2 s12">
+          <h5 class="white-text">Diese Website wurde erstellt mithilfe von...</h5>
+          <ul>
+            <li><a class="grey-text text-lighten-3" href="https://materializecss.com/">Material Design</a></li>
+            <li><a class="grey-text text-lighten-3" href="https://material.io/tools/icons/?style=baseline">Material Icons</a></li>
+            <li><a class="grey-text text-lighten-3" href="http://wpvs.de/">Webprogrammieren Tutorial</a></li>
+            <li><a class="grey-text text-lighten-3" href="https://github.com/">Versionsverwaltung GitHub</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-copyright">
+      <div class="container">
+        © 2018 Copyright
+        <a class="grey-text text-lighten-4 right" href="impressum.html">Impressum</a>
+        <br>
+      </div>
+    </div>
+  </footer>
+
+  <!-- weitere Scripte einbinden-->
+  <!-- jQuery und materialize.js importieren-->
+  <!-- wichtig ist hierbei jQuery zuerst zu importieren-->
+  <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script>
+
+  <!-- die Sidenav und Material Box initialisieren-->
+  <script>
+    $(".button-collapse").sideNav();
+
+    $(document).ready(function() {
+      $('.materialboxed').materialbox();
+    });
+  </script>
+
+</body>
+
+</html>

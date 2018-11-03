@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="de-DE">
+
+<head>
+  <!-- Meta-Daten festlegen-->
+  <meta charset="utf-8">
+  <meta name="author" content="Nils Leger">
+  <!-- Browser mitteilen, dass die Website für mobile Geräteoptimiert ist-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Google-Icons importieren-->
+  <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!-- materialize.css importieren-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/css/materialize.min.css">
+  <!-- css-Inhalte für den Helper-Text der Input fields einbinden-->
+  <!-- dieser CSS-Teil ist in einer neueren materialize-Version enthalten,
+  die allerdings nicht mit unserer Sidenav kompatibel ist-->
+  <link rel="stylesheet" type="text/css" href="../css/helper-text.css" />
+
+  <!-- Title und Icon festlegen-->
+  <title>Projektverwaltung</title>
+  <link rel="icon" type="image/png" href="../bilder/icon_projekt.png">
+
+  <!--jQuery importieren-->
+  <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <!--SweetAlert importieren-->
+  <script src="../../../node_modules/sweetalert2/dist/sweetalert2.all.min.js"></script>
+  <!-- die JS-Datei zum Hinzufügen der Projekte einbinden -->
+  <script src="../javascript/projekte_hinzufügen.js"></script>
+
+  <!-- die benötigten Firebase-Services importieren-->
+  <!-- ggf. werden einige JS-Dateien nicht benötigt-->
+  <script src="https://www.gstatic.com/firebasejs/5.5.4/firebase.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/5.3.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/5.3.0/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/5.5.4/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/5.5.4/firebase-database.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/5.5.4/firebase-messaging.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/5.5.4/firebase-functions.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/5.5.4/firebase-storage.js"></script>
+
+  <!-- Initialiserung der Firebase-->
+  <script>
+    var config = {
+      apiKey: "AIzaSyDyOFtI0Vf3cfCcInpAiPkBbhmS9uglSC4",
+      authDomain: "appfuerselbststaendige.firebaseapp.com",
+      databaseURL: "https://appfuerselbststaendige.firebaseio.com",
+      projectId: "appfuerselbststaendige",
+      storageBucket: "appfuerselbststaendige.appspot.com",
+      messagingSenderId: "986661797880"
+    };
+    firebase.initializeApp(config);
+  </script>
+
+  <!-- Kleine Änderungen am Style vornehmen-->
+  <!--#kartentitel: der Titel soll etwas Abstand vom Rand bekommen-->
+  <!--.element_sidenav: die Elemente der Sidenav mit dieser Klasse sollen eingrückt sein-->
+  <style>
+    #kartentitel{
+      padding-left: 25px;
+      padding-top: 25px;
+    }
+
+    .element_sidenav {
+      margin-left: 55px;
+    }
+  </style>
+</head>
+
+
+<body>
+  <!--Dropdown-Menü für die Navigationsleiste definieren-->
+  <ul id="projekte_dropdown" class="dropdown-content">
+    <li><a href="projekte.html">Projektübersicht</a></li>
+    <li><a href="projekte_projekte_anzeigen.html">Projekte anzeigen</a></li>
+    <li><a href="projekte_projekte_hinzufügen.html">Projekt hinzufügen</a></li>
+    <li><a href="projekte_tutorial.html">Tutorial</a></li>
+  </ul>
+
+  <!--Navigationsleiste definieren-->
+  <nav>
+    <div class="nav-wrapper blue">
+      <a href="projekte.html" class="brand-logo right"><i class="material-icons left">show_chart</i>Projektverwaltung</a>
+      <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+      <ul class="left hide-on-med-and-down">
+        <li><a href="home.html"><i class="material-icons left">home</i>Home</a></li>
+        <li><a href="arbeitszeit.html"><i class="material-icons left">access_time</i>Arbeitszeiterfassung</a></li>
+        <li><a href="finanzen.html"><i class="material-icons left">euro_symbol</i>Finanzen</a></li>
+        <li><a href="#!" class="dropdown-button" data-activates="projekte_dropdown">Projekte<i class="material-icons right">arrow_drop_down</i> <i class="material-icons left">show_chart</i></a></li>
+        <li><a href="sonstiges.html"><i class="material-icons left">more</i>Sonstiges</a></li>
+      </ul>
+      <ul class="side-nav" id="mobile-demo">
+        <li><a href="home.html"><i class="material-icons left">home</i>Home</a></li>
+        <li><a href="arbeitszeit.html"><i class="material-icons left">access_time</i>Arbeitszeiterfassung</a></li>
+        <li><a href="finanzen.html"><i class="material-icons left">euro_symbol</i>Finanzen</a></li>
+        <ul>
+          <li><a href="#!">Projekte<i class="material-icons left">show_chart</i></a></li>
+          <li><a href="projekte.html" class="element_sidenav"><i class="material-icons right">show_chart</i>Projektübersicht</a></li>
+          <li><a href="projekte_projekte_anzeigen.html" class="element_sidenav"><i class="material-icons right">show_chart</i>Projekte anzeigen</a></li>
+          <li><a href="projekte_projekte_hinzufügen.html" class="element_sidenav"><i class="material-icons right">show_chart</i>Projekt hinzufügen</a></li>
+          <li><a href="projekte_tutorial.html" class="element_sidenav">Tutorial<i class="material-icons right">build</i></a></li>
+        </ul>
+        <li><a href="sonstiges.html"><i class="material-icons left">more</i>Sonstiges</a></li>
+      </ul>
+    </div>
+  </nav>
+
+    <!-- Formular zum Einfügen der Projektdaten-->
+  <div class="container">
+
+    <div class="row">
+      <!--Abstand zum Header-->
+    </div>
+
+    <div class="row">
+
+      <form id="form" class="col s12">
+        <div class="row">
+          <div class="input-field col s12">
+            <i class="material-icons prefix">portrait</i>
+            <input id="name" type="text" class="validate" pattern="[A-Za-z-\s]+" required />
+            <label for="name">Projektname</label>
+            <span class="helper-text" data-error="Erlaubt sind: Buchstaben, Leerzeichen und Bindestriche"></span>
+          </div>
+      </form>
+    </div>
+
+    <div class="row">
+      <form class="col s12">
+        <div class="input-field col s6">
+          <i class="material-icons prefix">access_time</i>
+          <input id="dauer" type="number" class="validate">
+          <label for="dauer">Projektdauer</label>
+          <span class="helper-text" data-error="wrong"></span>
+        </div>
+        <div class="input-field col s6">
+          <i class="material-icons prefix">person</i>
+          <input type="text" id="verantwortlicher" class="validate" pattern="[A-Za-z-\s]+" />
+          <label for="verantwortlicher">Projektverwantwortlicher</label>
+          <span class="helper-text" data-error="Erlaubt sind: Buchstaben, Leerzeichen und Bindestriche"></span>
+        </div>
+      </form>
+    </div>
+
+    <div class="row">
+      <form class="col s12">
+        <div class="input-field col s6">
+          <i class="material-icons prefix">short_text</i>
+          <input id="kuerzel" type="text" class="validate" style="text-transform:uppercase" maxlength="4">
+          <label for="kuerzel">Projektkürzel</label>
+          <span class="helper-text" data-error="wrong"></span>
+        </div>
+        <div class="input-field col s6">
+          <i class="material-icons prefix">person_pin</i>
+          <input id="kunde" type="text" class="validate" pattern="[A-Za-z-\s]+">
+          <label for="kunde">Kunde</label>
+          <span class="helper-text" data-error="Erlaubt sind: Buchstaben, Leerzeichen und Bindestriche"></span>
+        </div>
+      </form>
+    </div>
+
+    <div class="row">
+      <form class="col s12">
+        <div class="input-field col s6">
+          <i class="material-icons prefix">euro_symbol</i>
+          <input id="kosten" type="number" class="validate">
+          <label for="kosten">Kosten</label>
+          <span class="helper-text" data-error="wrong"></span>
+        </div>
+        <div class="input-field col s6">
+          <i class="material-icons prefix">person_outline</i>
+          <input id="ansprechpartner" type="text" class="validate" pattern="[A-Za-z-\s]+">
+          <label for="ansprechpartner">Ansprechpartner Kunde</label>
+          <span class="helper-text" data-error="Erlaubt sind: Buchstaben, Leerzeichen und Bindestriche"></span>
+        </div>
+      </form>
+    </div>
+
+    <div class="row">
+      <form class="col s12">
+        <div class="input-field col s6">
+          <i class="material-icons prefix">date_range</i>
+          <input id="start" type="date" class="datepicker">
+          <label for="start">Projektstart</label>
+          <span class="helper-text" data-error="wrong"></span>
+        </div>
+        <div class="input-field col s6">
+          <i class="material-icons prefix">date_range</i>
+          <input id="ende" type="date" class="datepicker">
+          <label for="ende">Geplantes Projektende</label>
+          <span class="helper-text" data-error="wrong"></span>
+        </div>
+      </form>
+    </div>
+
+    <div class="row">
+      <form class="col s12">
+        <div class="input-field col s12">
+          <i class="material-icons prefix">subject</i>
+          <textarea id="beschreibung" class="materialize-textarea"></textarea>
+          <label for="beschreibung">Ausführliche Beschreibung</label>
+        </div>
+      </form>
+    </div>
+
+    <div class="row">
+      <div class="col s12">
+        <form action="#">
+          <div class="file-field input-field col s12">
+            <div class="btn">
+              <span><i class="material-icons left">attach_file</i>Projektdokumentation</span>
+              <input id="file" type="file">
+            </div>
+            <div class="file-path-wrapper">
+              <input class="file-path validate" type="text">
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col s12">
+        <div class="col s6">
+          <a class="btn-large pulse waves-effect waves green" onclick="saveProject()">Hinzufügen<i class="material-icons left">send</i></a>
+        </div>
+        <div class="col s6">
+          <a class="btn-large waves-effect waves-light red" onclick="deleteValues()">Abbrechen<i class="material-icons left">close</i></a>
+        </div>
+      </div>
+    </div>
+
+    <!-- hier Endet der Formular-Teil-->
+    </div>
+  </div>
+
+
+  <!--Footer der Seite definieren-->
+  <footer class="page-footer blue">
+    <div class="container">
+      <div class="row">
+        <div class="col l6 s12">
+          <h5 class="white-text">Über diese Website</h5>
+          <p class="grey-text text-lighten-4">
+            Diese Website bietet eine kostenlose Möglichkeit für alle kleinen Unternehmen und Selbstständigen,
+            die ihre Finanzen, Arbeitszeiten und Projekte im Überblick behalten wollen.
+            Viel Spaß und Erfolg beim Nutzen unserer Website.
+          </p>
+        </div>
+        <div class="col l4 offset-l2 s12">
+          <h5 class="white-text">Diese Website wurde erstellt mithilfe von...</h5>
+          <ul>
+            <li><a class="grey-text text-lighten-3" href="https://materializecss.com/">Material Design</a></li>
+            <li><a class="grey-text text-lighten-3" href="https://material.io/tools/icons/?style=baseline">Material Icons</a></li>
+            <li><a class="grey-text text-lighten-3" href="http://wpvs.de/">Webprogrammieren Tutorial</a></li>
+            <li><a class="grey-text text-lighten-3" href="https://github.com/">Versionsverwaltung GitHub</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-copyright">
+      <div class="container">
+        © 2018 Copyright
+        <a class="grey-text text-lighten-4 right" href="impressum.html">Impressum</a>
+        <br>
+      </div>
+    </div>
+  </footer>
+
+  <!-- weitere Scripte einbinden-->
+  <!-- materialize.js importieren-->
+  <!-- wichtig ist hierbei, dass jQuery zuerst zu importiert wird-->
+  <!-- jQuery wurde bereits im Header importiert-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script>
+  <!-- require.js importieren-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.js"></script>
+
+  <!-- die Sidenav initialisieren-->
+  <script>
+    $(".button-collapse").sideNav();
+  </script>
+
+</body>
+
+</html>
