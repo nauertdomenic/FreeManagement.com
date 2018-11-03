@@ -1,0 +1,115 @@
+/* Hintergrundbild festlegen*/
+body {
+    background-image: url(../bilder/background.jpeg);
+}
+
+/* Schatten und Animation für das Pinguin-Gif*/
+#pinguin {
+  box-shadow: 2px 2px 4px rgba(0,0,0, 0.5);
+  animation: drehung 1s alternate infinite;
+}
+
+/* Style für die erste Zeile der Willkommensnachricht*/
+#heading_welcome {
+  color: white;
+  font-family: "Comic Sans MS", cursive, sans-serif;
+  text-align: center;
+  line-height: 1,5;
+  text-shadow: 1px white;
+  font-weight: bolder;
+}
+
+/* Style für die zweite Zeile der Willkommensnachricht*/
+#heading_description{
+  color: white;
+  font-family: "Comic Sans MS", cursive, sans-serif;
+  text-align: center;
+}
+
+/* Eigenschaften des Rahmens um die gesamte Überschrift festlegen*/
+#heading_home {
+  border: 3px solid white;
+  border-radius: 25px;
+  border-style: dotted;
+  overflow: hidden;
+}
+
+/* Style für den Hinweis zu den eingebundenen Medien*/
+/* Hat zwar die gleichen Eigenschaften wie #heading_description, aber:
+  hätte das Hinzufügen eines neuen Elements mit einer gemeinsamen Klasse vor den beiden Texten erfordert
+  und so kann der Style von einem Element ggf. individualisiert werden*/
+#akustik_hinweis {
+  color: white;
+  font-family: "Comic Sans MS", cursive, sans-serif;
+  text-align: center;
+}
+
+/* Style der Trennlinie*/
+#trennlinie {
+  border-style: dotted;
+  color: white;
+}
+
+/* Animation für das Pinguin-Gif */
+@keyframes drehung {
+  0%{
+    transform: rotate(-4deg);
+  }
+  100%{
+    transform: rotate(4deg);
+  }
+}
+
+/* Animation für das erste Noten-Logo*/
+@keyframes musikKlingeln1 {
+  0%{
+    transform: rotate(-2deg);
+  }
+  100%{
+    transform: rotate(2deg);
+  }
+
+}
+
+/* Animation für das zweite Noten-Logo*/
+@keyframes musikKlingeln2 {
+  0%{
+    transform: skewX(-10deg);
+  }
+  100%{
+    transform: skewX(+10deg);
+  }
+
+}
+
+/* Animation für das erste Noten-Logo*/
+#musik_icon1 {
+  animation: musikKlingeln1 0.1s alternate infinite;
+}
+
+/* Animation für das zweite Noten-Logo*/
+#musik_icon2 {
+  animation: musikKlingeln2 0.1s alternate infinite;
+}
+
+/* Style der Überschrift für die tabellarische Auflistung der Module der Website*/
+#überschrift_liste{
+  color: white;
+  font-family: "Comic Sans MS", cursive, sans-serif;
+  text-align: center;
+}
+
+/* Style der List der Module der Webiste*/
+#liste_funtkionen{
+  background: #42a5f5;
+  padding: 20px;
+  width: 500px;
+  margin: auto;
+  border-radius: 25px;
+}
+
+/* Style der einzelnen Listenelemente*/
+.listenelemente {
+  background: #90caf9;
+  margin: 5px;
+}
