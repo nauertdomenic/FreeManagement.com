@@ -4,9 +4,12 @@ body{
   }
 h6{
   font-family: "Arial",Arial, monospace;
-  color: SlateBlue;
+  color: white;
 }
-
+h2{
+  color:white;
+  font-family: Verdana, "Lucida Sans Unicode", sans-serif;
+}
 h4{
   color: MediumSeaGreen;
   text-align: center;
@@ -27,7 +30,7 @@ p{
 
 }
 a{
-  color:black;
+  color:white;
 }
 #einruecken{
   margin-left: 15px;
