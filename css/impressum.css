@@ -1,0 +1,51 @@
+
+body{
+  background: linear-gradient(to right, black, blue);
+  }
+h6{
+  font-family: "Arial",Arial, monospace;
+  color: white;
+}
+h2{
+  color:white;
+  font-family: Verdana, "Lucida Sans Unicode", sans-serif;
+}
+h4{
+  color: MediumSeaGreen;
+  text-align: center;
+  font-family: "Lucida Console",Lucida, monospace;
+  background: linear-gradient(to left, black, blue);
+
+}
+.eins{
+  font-family: "Time New Roman", Times, Serif;
+
+}
+.zwei{
+
+  background: linear-gradient(to left, blue, red);
+}
+p{
+  color:white;
+
+}
+a{
+  color:white;
+}
+#einruecken{
+  margin-left: 15px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+b{
+  color:red;
+}
+#pulsierend{
+animation-name: pulse;
+animation-duration: 1s;
+}
+@keyframes pulse {
+  0%{transform:scale(1);}
+  50%{transform:scale(1.2);}
+100%{transform:scale(1);}
+}
